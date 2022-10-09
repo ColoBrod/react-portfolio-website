@@ -1,0 +1,36 @@
+.payment-method {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.payment-method:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
+.bank-card {
+  position: relative;
+  width: 21.5rem;
+  flex-shrink: 0;
+  aspect-ratio: 344 / 218;
+  border-radius: .6rem;
+  user-select: none;
+}
+
+.bank-card__logo {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  user-select: none;
+}
+
+.bank-card__number {
+  position: absolute;
+  left: 0; 
+  width: 100%;
+  user-select: none;
+  text-align: center;
+  top: 50%;
+  font-size: 1.9rem;
+  cursor: pointer;
+}

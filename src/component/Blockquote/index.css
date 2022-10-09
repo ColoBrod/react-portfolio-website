@@ -1,0 +1,19 @@
+.blockquote {
+  font-size: .9rem;
+  /* padding: 0 1.5rem; */
+}
+  /* --color-bquote-success: #00C52B; */
+  /* --color-bquote-warning: #C58E00; */
+  /* --color-bquote-error: #C52300; */
+
+.blockquote-success {
+  color: #00c52b;
+}
+
+.blockquote-warning {
+  color: #C58E00;
+}
+
+.blockquote-error {
+  color: #C52300;
+}

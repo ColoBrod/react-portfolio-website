@@ -1,0 +1,178 @@
+#workflow article {
+  display: flex;
+  gap: 2rem;
+  width: 70%;
+  height: fit-content;
+  margin: 0 auto 2rem;
+  /* background: rgba(0,0,0, 0.3); */
+}
+
+#workflow article:nth-child(2n+1) {
+  flex-direction: row;
+}
+
+#workflow article:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
+.workflow__step-aside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.workflow__step-number {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  line-height: 3rem;
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  font-weight: 500;
+  background-color: var(--color-primary);
+}
+
+/* #workflow article:nth-child(2n+1) .workflow__step-header { */
+/*   flex-direction: row-reverse; */
+/* } */
+
+/* #workflow article:nth-child(2n+1) .workflow__step-description { */
+/*   text-align: right; */
+/* } */
+
+
+/* #workflow article:nth-child(2n+1) .workflow__step-header { */
+/*   flex-direction: row-reverse; */
+/* } */
+
+
+/* .workflow__step-txt  { */
+/*   /1* background: violet; *1/ */
+/*   /1* width: 16rem; *1/ */
+/*   flex-grow: 1; */
+/*   height: 14rem; */
+/* } */
+
+/* .workflow__step-header { */
+/*   display: flex; */
+/*   gap: 1rem; */
+/* } */
+
+/* .workflow__step-number { */
+/*   width: var(--workflow-step-height); height: var(--workflow-step-height); */
+/*   border-radius: 50%; */
+/*   background: var(--color-primary); */
+/*   font-weight: 700; */
+/*   font-size: 1.7rem; */
+/*   display: flex; */
+/*   justify-content: center; */
+/*   align-items: center; */
+/* } */
+
+/* .workflow__step-title { */
+/*   color: var(--color-primary); */
+/*   line-height: var(--workflow-step-height); */
+/*   font-size: 1.4rem; */
+/* } */
+
+/* .workflow__step-description { */
+/*   margin-top: 1rem; */
+/* } */
+
+/* Card */
+.workflow__card-wrapper {
+  height: 14rem;
+  width: 24rem;
+  flex-shrink: 0;
+  /* background: green; */
+}
+
+.workflow__card {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 70rem;
+  /* background: darkblue; */
+}
+
+
+.workflow__card-front,
+.workflow__card-back {
+  /* border: 1px solid white; */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  transition: var(--transition);
+  border-radius: 1rem;
+  /* background: darkblue; */
+}
+
+/* ============ Лицевая сторона карточки ============ */
+.workflow__card-front {
+  background-image: url("assets/img/workflow/1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /* background: var(--color-primary); */
+  border: 1px solid transparent;
+}
+
+.workflow__card-title {
+  position: absolute;
+  padding: .4rem 1rem;
+  background: rgba(0,0,0,0.4);
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  left: 1rem;
+  bottom: 1rem;
+}
+
+/* ============ Задняя сторона карточки ============ */
+.workflow__card-back {
+  /* background: blue; */
+  /* background: var(--color-primary); */
+  border: 1px solid var(--color-primary-variant);
+  background: var(--color-bg);
+  transform: rotateY(180deg);
+  padding: 1rem;
+}
+
+.workflow__card.workflow__card-flip .workflow__card-front {
+  transform: rotateY(180deg);
+}
+
+.workflow__card.workflow__card-flip .workflow__card-back {
+  transform: rotateY(360deg);
+}
+
+@media screen and (max-width: 1024px) {
+  #workflow article {
+    /* width: 100%; */
+    width: var(--container-width-md);
+    /* padding: 0 2rem; */
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  #workflow article {
+    flex-direction: column !important;
+    /* width: var(--container-width-md); */
+    /* padding: 0 2rem; */
+  }
+
+  .workflow__card-wrapper {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 24 / 14;
+  }
+
+}

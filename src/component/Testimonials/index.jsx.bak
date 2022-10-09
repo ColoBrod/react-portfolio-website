@@ -1,0 +1,114 @@
+import React from 'react';
+
+import { Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+
+import './index.css';
+import "/node_modules/flag-icons/css/flag-icons.min.css";
+
+import img1 from '../../assets/img/client/1.jpeg';
+import img2 from '../../assets/img/client/2.jpeg';
+import img3 from '../../assets/img/client/3.jpeg';
+import img4 from '../../assets/img/client/4.jpeg';
+import img5 from '../../assets/img/client/5.jpeg';
+import img6 from '../../assets/img/client/6.jpeg';
+import img7 from '../../assets/img/client/7.jpeg';
+import img8 from '../../assets/img/client/8.jpeg';
+import img9 from '../../assets/img/client/9.jpeg';
+
+const data = [
+  {
+    name: "Ceilidh McGrath",
+    img: img1,
+    country: "ru",
+    date: new Date(),
+    review: "Nicholas did good work and goes the exstra mile to do the job in a good matter",
+  },
+  {
+    name: "Ceilidh McGrath",
+    img: img2,
+    country: "es",
+    date: new Date(),
+    review: "Nicholas did good work and goes the exstra mile to do the job in a good matter",
+  },
+  {
+    name: "Ceilidh McGrath",
+    img: img3,
+    country: "us",
+    date: new Date(),
+    review: "Nicholas did good work and goes the exstra mile to do the job in a good matter",
+  },
+  {
+    name: "Ceilidh McGrath",
+    img: img4,
+    country: "ua",
+    date: new Date(),
+    review: "Nicholas did good work and goes the exstra mile to do the job in a good matter",
+  },
+  {
+    name: "Ceilidh McGrath",
+    img: img5,
+    country: "ru",
+    date: new Date(),
+    review: "Nicholas did good work and goes the exstra mile to do the job in a good matter",
+  },
+  {
+    name: "Ceilidh McGrath",
+    img: img6,
+    country: "fi",
+    date: new Date(),
+    review: "Nicholas did good work and goes the exstra mile to do the job in a good matter",
+  },
+];
+
+class Testimonials extends React.Component {
+  render() {
+    return (
+      <section id="testimonials">
+        <h5>Review from clients</h5>
+        <h2>Testimonials</h2>
+        
+        <div className="container container__testimonials">
+          <p>
+            Мне нравятся иностранные языки, и это позволило мне работать с интересными людьми со всего мира. Без лишней скромности, вот что говорят клиенты о моей работе:
+          </p>
+          <Swiper 
+            className="testimonial-list"
+            // install Swiper modules
+            modules={[Pagination]}
+            slidesPerView={1}
+            spaceBetween={40}
+            pagination={{ clickable: true }}
+          >
+            { data.map((testimonial, index) => this.renderItem(testimonial)) }
+          </Swiper>
+        </div>
+
+      </section>
+    );
+  }
+
+  renderItem(testimonial, index) {
+    const { name, img, country, date, review } = testimonial;
+    return (
+      <SwiperSlide class="testimonial" key={index}>
+        <div className="client__avatar">
+          <img src={img} alt="" />
+          <div className="client__flag">
+            <span className={`fi fi-${country}`}></span>
+          </div>
+        </div>
+        <div className="client__content">
+          <h3>{name}</h3>
+          <p>"{review}"</p>
+        </div>
+
+      </SwiperSlide>
+    );
+  }
+}
+
+export default Testimonials;
