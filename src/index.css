@@ -10,6 +10,15 @@
   text-decoration: none;
 }  
 
+/*
+ * freesvgillustration.com
+ *
+ * Primary:
+ * #2c2c6c
+ * Secondary:
+ * #1f1f38
+*/
+
 :root {
   --color-bg: #1f1f38;
   --color-bg-variant: #2c2c6c;
@@ -40,11 +49,12 @@ html {
 }
 
 /* Убирает полосу прокрутки для сайта */
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
   display: none;
 }
 
 body {
+  /* position: relative; */
   /* background: var(--color-bg); */
   color: var(--color-white);
   line-height: 1.7;

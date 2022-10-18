@@ -1,12 +1,8 @@
 import React from 'react';
 import './index.css';
 
-// Icons
-import { FaFacebookF } from 'react-icons/fa';
-import { FiInstagram } from 'react-icons/fi';
-import { IoLogoTwitter } from 'react-icons/io';
-
-
+import links from 'links';
+import lcLinks from '../Nav/locales';
 
 class Footer extends React.Component {
   render() {
@@ -17,19 +13,11 @@ class Footer extends React.Component {
         </a>
 
         <ul className="footer__permalinks">
-          <li><a href="#header">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#contacts">Contacts</a></li>
+          { links.section.map(this.renderPermalink) }
         </ul>
 
         <div className="footer__socials">
-          <a href="https://facebook.com"><FaFacebookF /></a>
-          <a href="https://instagram.com"><FiInstagram /></a>
-          <a href="https://twitter.com"><IoLogoTwitter /></a>
+          { links.social.map(this.renderSocial) }
         </div>
         <div className="footer__copyright">
           <small>&copy; Николай Лазарев. All rights reserved.</small>
@@ -37,6 +25,20 @@ class Footer extends React.Component {
 
       </div>
 
+    );
+  }
+
+  renderPermalink(link, i) {
+    return (
+      <a key={i} href={"#" + link.id} >{ lcLinks[link.id] }</a>
+    );
+  }
+
+  renderSocial(item, i) {
+    const { id, display, icon, url } = item;
+    if (!display) return null;
+    return (
+      <a key={i} href={url} target="_blank">{ icon.footer }</a>
     );
   }
 }

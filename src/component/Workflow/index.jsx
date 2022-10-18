@@ -2,15 +2,15 @@ import React from 'react';
 
 import './index.css';
 
-const isMobile = 
-  navigator.userAgent.match(/Android/i) ||
-  navigator.userAgent.match(/iPhone/i) ? true : false;
+import device from 'fn/device-info';
 
+
+
+import data from './data';
 
 class Workflow extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   render() {
@@ -18,23 +18,26 @@ class Workflow extends React.Component {
       <section id="workflow">
         <h5>Как я работаю?</h5>
         <h2>Рабочий процесс</h2>
+
+        <div className="container container__workflow">
+          { data.map((step, i) => this.renderStep(step, i)) }
+        </div>
         
-        { this.renderStep() }
-        { this.renderStep() }
 
       </section>
     );
   }
 
-  renderStep() {
+  renderStep(step, i) {
     return(
-      <article className="workflow__step">
+      <article key={i} className="workflow__step">
         <div className="workflow__card-wrapper">
-          <WorkflowCard />
+          <WorkflowCard img={step.img} description={step.description} />
         </div>
 
         <div className="workflow__step-aside">
-          <div className="workflow__step-number">1</div>
+          <div className="workflow__step-number">{ i+1 }</div>
+          <div className="workflow__step-title">{ step.title }</div>
         </div>
 
 
@@ -70,6 +73,10 @@ class WorkflowCard extends React.Component {
 
   render() {
     const { hover } = this.state;
+    const { description, img } = this.props;
+    const styles = {
+      backgroundImage: `url(${ img })`,
+    }
     return (
       <div 
         onClick={this.mouseClick}
@@ -77,13 +84,18 @@ class WorkflowCard extends React.Component {
         onMouseLeave={this.mouseLeave} 
         className={ `workflow__card ${ hover ? "workflow__card-flip" : "" }` }
       >
-        <div className="workflow__card-front">
+        <div styles={styles} className="workflow__card-front">
+          {
+            img && <img className="workflow__card-img" src={img} alt="" />
+          }
+          {/*
           <div className="workflow__card-title">
             Обсуждение
           </div>
+          */}
         </div>
         <div className="workflow__card-back">
-          Обсуждаем ваш проект. Устно или письменно. При необходимости используем Teamviewer или другую программу для демонстрации экрана. Я делаю делаю для себя пометки.
+          { description }
         </div>
       </div>
     );
@@ -97,14 +109,14 @@ class WorkflowCard extends React.Component {
   }
 
   mouseEnter() {
-    if (isMobile) return;
+    if (device.isMobile) return;
     this.setState({
       hover: true
     });
   }
   
   mouseLeave() {
-    if (isMobile) return;
+    if (device.isMobile) return;
     this.setState({
       hover: false
     });

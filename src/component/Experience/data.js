@@ -26,6 +26,7 @@ const data = [
       { name: "Python", lvl: 1 },
       { name: "Bash", lvl: 1 },
       { name: "PowerShell", lvl: 0 },
+      { name: "Java", lvl: 0 },
       { name: "CORS", lvl: 1 },
       { name: "WebSockets", lvl: 1 },
       { name: "JSON/XML", lvl: 2 },
@@ -48,6 +49,8 @@ const data = [
       { name: "VPN / OpenVPN", lvl: 1 },
       { name: "TCP/IP", lvl: 1 },
       { name: "DNS", lvl: 1 },
+      { name: "QEMU/KVM", lvl: 2 },
+      { name: "VMWare", lvl: 1 },
     ],
   },
   {
@@ -96,6 +99,14 @@ const data = [
     sectionName: "mobile",
     skill: [
       { name: "React Native", lvl: 0 },
+    ],
+  },
+  {
+    sectionName: "lang",
+    skill: [
+      { name: "Русский", description: "native" },
+      { name: "English", description: "c2" },
+      { name: "Español", description: "b2" },
     ],
   },
 ];

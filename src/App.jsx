@@ -18,11 +18,11 @@ import Contacts from './component/Contacts';
 import PaymentDetails from './component/PaymentDetails';
 import Footer from './component/Footer';
 
+import link from 'links';
+
 // TODO 
 // * Перед компиляцией (для продакшена) необходимо добавить домен в package.json
-// * Change background to texture pattern
 // * Исправить ошибки компиляции, убрать Варнинги.
-// * Добавить модальные окна для портфолио
 // * Полный перевод на Русский и Английский языки
 // * Добавить нормальное резюме
 // * Добавить раздел с реквизитами для оплаты
@@ -30,42 +30,87 @@ import Footer from './component/Footer';
 // * Полностью протестировать сайт перед публикацией
 // * Полностью протестировать сайт после публикации
 // * Под отзывами рассказать о своих клиентах, их геолокации
-// * Флажки для отзывов
 // * Убрать testimonials.txt
 // * Автоматическое проигрывание слайдера в Портфолио
 // * Закруглить кнопки в Портфолио
+// * Отсортировать работы в портфолио
+// * Убрать отступ в футере
+// * Добавить контекст для переключения языка
+// * Поработать с адаптивностью модалки
+// * Слайдер - выбирать первый слайд при открытии.
+// * Гриды для выравнивания элементов по высоте.
 
-const languages = ["en", "ru"]; //, "es"
+
+
+const languages = ["en", "ru", "es"]; //, "es"
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ln: "en"
+      ln: this.getBrowserLn(),
     }
+    this.resizeObserver = new ResizeObserver(this.updateDimensions);
     this.switchLn = this.switchLn.bind(this);
+    this.updateDimensions = this.updateDimensions.bind(this);
   }
 
   render() {
     let { ln } = this.state;
     return (
       <>
+        {/* FLOATING ITEMS */}
         <Nav ln={ln} />
         <LnSwitcher ln={ln} languages={languages} switchLn={this.switchLn} />
         <ToolTip ln={ln} /> 
         <ModalBox ln={ln} />
+
+        {/* SECTIONS */}
         <Header ln={ln} />
         <About ln={ln} />
-        <Experience ln={ln} />
         <Portfolio ln={ln} />
+        <Experience ln={ln} />
         <Workflow ln={ln} />
-        <Services ln={ln} />
+        {/* <Services ln={ln} /> */}
         <Testimonials ln={ln} />
         <Contacts ln={ln} />
-        <PaymentDetails ln={ln} />
+        {/*<PaymentDetails ln={ln} />*/}
         <Footer ln={ln} />
       </>
     );
+  }
+
+  updateDimensions() {
+    // console.clear();
+    // console.log(`%cSIZE: ${document.body.clientWidth}x${document.body.clientHeight}`, "color: blue; font-size: 14px;")
+    const { section } = link;
+    const offsets = [];
+    section.forEach(({ id }, i) => {
+      const el = document.getElementById(id);
+      offsets[i] = { id, offset: el.offsetTop };
+    });
+    const event = new CustomEvent("dom-offsets", { detail: offsets });
+    document.dispatchEvent(event);
+  }
+
+  componentDidMount() {
+    this.resizeObserver.observe(document.body);
+  }
+
+  componentWillUnmount() {
+    this.resizeObserver.unobserve(document.body);
+  }
+
+  getBrowserLn() {
+    let ln = window.navigator.language;
+    ln = ln.substring(0,2);
+    switch (ln) {
+      case 'ru': return 'ru';
+      case 'en': return 'en';
+      case 'es': return 'es';
+      default: return 'en';
+    }
   }
 
   switchLn(ln) {

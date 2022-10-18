@@ -1,6 +1,6 @@
 import LocalizedStrings from 'react-localization';
 
-// import historyRU from './history.ru.html';
+
 
 const locales = new LocalizedStrings({
   en: {
@@ -22,8 +22,8 @@ const locales = new LocalizedStrings({
         small: "80+ Completed",
       },
     },
-    p: "Amet ab repudiandae nam cumque eum Corporis sapiente atque ipsam officiis iste nihil suscipit vel Mollitia voluptate facilis neque fugit totam Minima quo quod sint doloremque rem Voluptas est ducimus",
     button: "Let's Talk",
+    // history: historyEN,
   },
   ru: {
     title: {
@@ -40,13 +40,35 @@ const locales = new LocalizedStrings({
         small: "100+ по всему миру",
       },
       projects: {
-        h5: "Проэкты",
+        h5: "Проекты",
         small: "80+ завершено",
       }
     },
-    // p: historyRU,
     button: "Связаться",
+    // history: historyRU,
+  },
+  es: {
+    title: {
+      h5: "Llegar a saber",
+      h2: "Sobre mí",
+    },
+    card: {
+      experience: {
+        h5: "Experiencia",
+        small: "3+ años trabajando",
+      },
+      clients: {
+        h5: "Clientes",
+        small: "100+ en todo el mundo",
+      },
+      projects: {
+        h5: "Proyectos",
+        small: "80+ completado",
+      },
+    },
+    button: "Hablemos",
   }
-})
+});
+
 
 export default locales;

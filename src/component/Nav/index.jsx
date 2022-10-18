@@ -1,28 +1,22 @@
 import React from 'react';
-import './index.css';
+import MediaQuery from 'react-responsive'
 
-// Icons
-import { 
-  AiOutlineHome,
-  AiOutlineUser
-} from 'react-icons/ai';
-import {
-  BiBook,
-  BiMessageSquareDetail
-} from 'react-icons/bi';
-import { RiServiceLine } from 'react-icons/ri';
-import { CgWebsite } from 'react-icons/cg';
+import styles from './index.css';
 
 import lc from './locales.js';
+import device from 'fn/device-info';
 
+import elements from 'links';
 
 class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeNav: "#header"
+      activeNav: "#header",
+      offsets: null,
     };
     // Explicitly binding this
+    this.setOffsets = this.setOffsets.bind(this);
     this.setScreen = this.setScreen.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
   }
@@ -31,25 +25,17 @@ class Nav extends React.Component {
     const { ln } = this.props;
     lc.setLanguage(ln);
     const { activeNav } = this.state;
-    const element = [
-      { id: "#header", icon: <AiOutlineHome />, name: lc.header },
-      { id: "#about", icon: <AiOutlineUser />, name: lc.about },
-      { id: "#experience", icon: <BiBook />, name: lc.experience },
-      { id: "#portfolio", icon: <CgWebsite />, name: lc.portfolio },
-      { id: "#services", icon: <RiServiceLine />, name: lc.services },
-      { id: "#contacts", icon: <BiMessageSquareDetail />, name: lc.contacts },
-    ];
     return (
       <nav>
         {
-          element.map((el, i) => {
+          elements.section.map((el, i) => {
             return(
               <NavElement 
                 id={el.id} 
                 icon={el.icon} 
-                name={el.name}
+                media={el.media}
                 key={i} 
-                isActive={ activeNav == el.id ? "active" : "" }
+                isActive={ activeNav == `#${el.id}` ? "active" : "" } 
               />
             );
           })
@@ -59,27 +45,18 @@ class Nav extends React.Component {
   }
 
   componentDidMount() {
-    const observer = new IntersectionObserver(
-      this.handleScroll, 
-      { 
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.75
-      }
-    );
-    const section = [
-      "header", 
-      "about", 
-      "experience", 
-      "portfolio",
-      "services",
-      "testimonials",
-      "contacts",
-      "footer",
-    ];
-    section.forEach((id) => {
-      const element = document.getElementById(id);
-      observer.observe(element);
+    document.addEventListener("scroll", this.handleScroll);
+    document.addEventListener("dom-offsets", this.setOffsets);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("scroll", this.handleScroll);
+    document.removeEventListener("dom-offsets", this.setOffsets);
+  }
+
+  setOffsets(e) {
+    this.setState({
+      offsets: e.detail,
     });
   }
 
@@ -89,13 +66,24 @@ class Nav extends React.Component {
     });
   }
 
-  handleScroll(entry, observer) {
-    const { intersectionRatio, target } = entry[0];
-    const { id } = target;
-    if (entry[0].intersectionRatio >= 0.75) {
-      this.setState({
-        activeNav: `#${id}`
-      });
+  handleScroll(event) {
+    const { offsets } = this.state;
+    const { scrollY } = window;
+    if (!offsets) return;
+
+    for (let i = 0; i < offsets.length; i++) {
+      const curSection = offsets[i];
+      const nextSection = offsets[i+1];
+      const gap = 200;
+      let activeNav;
+      if (
+        !nextSection ||
+        (scrollY >= curSection.offset - gap && scrollY < nextSection.offset - gap)
+      ) {
+        activeNav = `#${curSection.id}`;
+        if (this.state.activeNav != activeNav) this.setState({ activeNav });
+        break;
+      }
     }
   }
 }
@@ -103,31 +91,39 @@ class Nav extends React.Component {
 class NavElement extends React.Component {
   constructor(props) {
     super(props);
+    this.handleMouseClick = this.handleMouseClick.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
   render() {
-    const { id, isActive, icon } = this.props;
+    const { id, isActive, icon, media } = this.props;
     return(
-      <a 
-        ref="a"
-        href={ id } 
-        className={ isActive }
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
-      >
-        { icon }
-      </a>
+      <MediaQuery minWidth={media}>
+        <a 
+          ref="a"
+          href={ `#${id}` } 
+          className={ isActive }
+          onClick={this.handleMouseClick}
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
+        >
+          { icon }
+        </a>
+      </MediaQuery>
     );
   }
 
+  handleMouseClick() {
+  }
 
   handleMouseEnter() {
+    if (device.isMobile) return;
     const element = this.refs.a;
     const rect = element.getBoundingClientRect();
     let { x, y, width, height } = rect;
-    const { name } = this.props;
+    const { id } = this.props;
+    const name = lc[id];
     x = Math.round(x);
     y = Math.round(y);
     width = Math.round(width);
@@ -137,6 +133,7 @@ class NavElement extends React.Component {
   }
 
   handleMouseLeave() {
+    if (device.isMobile) return;
     const eventMouseLeave = new Event('mouseLeave');
     document.dispatchEvent(eventMouseLeave);
   }

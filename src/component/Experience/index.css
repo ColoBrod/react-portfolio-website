@@ -6,7 +6,7 @@
 
 .experience__section {
   background: var(--color-bg-variant);
-  padding: 2.4rem 5rem;
+  padding: 1.4rem 2rem;
   border-radius: 2rem;
   border: 1px solid transparent;
   transition: var(--transition);
@@ -44,12 +44,13 @@
 
 @media screen and (max-width: 1024px) {
   .container__experience {
+    /* width: var(--container-width-md); */
     grid-template-columns: 1fr;
   }
 
   .experience__section {
-    width: 80%;
-    padding: 2rem;
+    width: 100%;
+    /* padding: 2rem; */
     margin: 0 auto;
   }
 
@@ -60,12 +61,12 @@
 
 @media screen and (max-width: 600px) {
   .container__experience {
-    gap: 1rem;
+    /* gap: 1rem; */
   }
 
   .experience__section {
     width: 100%;
-    padding: 2rem 1rem;
+    /* padding: 2rem 1rem; */
   }
 }
 

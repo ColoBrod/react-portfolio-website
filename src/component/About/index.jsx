@@ -7,7 +7,11 @@ import { VscFolderLibrary } from 'react-icons/vsc';
 
 import lc from './locales.js';
 
-import historyRU from './history.ru.jsx';
+const history = {
+  en: require('./history.en.jsx').default,
+  ru: require('./history.ru.jsx').default,
+  es: require('./history.es.jsx').default,
+};
 
 class About extends React.Component {
   render() {
@@ -26,17 +30,17 @@ class About extends React.Component {
           </div>
           <div className="about__content">
             <div className="about__cards">
-              <article className="about__card">
+              <article className="about__card" onClick={() => this.handleClick("#experience")}>
                 <FaAward className="about__icon"/>
                 <h5>{lc.card.experience.h5}</h5>
                 <small>{lc.card.experience.small}</small>
               </article>
-              <article className="about__card">
+              <article className="about__card" onClick={() => this.handleClick("#testimonials")}>
                 <FiUsers className="about__icon"/>
                 <h5>{lc.card.clients.h5}</h5>
                 <small>{lc.card.clients.small}</small>
               </article>
-              <article className="about__card">
+              <article className="about__card" onClick={() => this.handleClick("#portfolio")}>
                 <VscFolderLibrary className="about__icon"/>
                 <h5>{lc.card.projects.h5}</h5>
                 <small>{lc.card.projects.small}</small>
@@ -44,7 +48,7 @@ class About extends React.Component {
             </div>
 
             <div>
-              {historyRU}
+              {history[ln]}
             </div>
 
             <a href="#contacts" className="btn btn-primary">{lc.button}</a>
@@ -52,6 +56,10 @@ class About extends React.Component {
         </div>
       </section>
     );
+  }
+
+  handleClick(anchor) {
+    window.location.href = anchor;
   }
 }
 

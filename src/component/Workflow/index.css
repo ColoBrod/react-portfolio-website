@@ -1,17 +1,17 @@
-#workflow article {
+.workflow__step {
   display: flex;
   gap: 2rem;
-  width: 70%;
+  /* width: 70%; */
   height: fit-content;
   margin: 0 auto 2rem;
   /* background: rgba(0,0,0, 0.3); */
 }
 
-#workflow article:nth-child(2n+1) {
+.workflow__step:nth-child(2n+1) {
   flex-direction: row;
 }
 
-#workflow article:nth-child(2n) {
+.workflow__step:nth-child(2n) {
   flex-direction: row-reverse;
 }
 
@@ -20,6 +20,7 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  gap: 1rem;
 }
 
 .workflow__step-number {
@@ -31,7 +32,13 @@
   font-size: 2rem;
   color: white;
   font-weight: 500;
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-variant);
+}
+
+.workflow__step-title {
+  line-height: 3rem;
+  font-size: 1.4rem;
+  font-weight: 500;
 }
 
 /* #workflow article:nth-child(2n+1) .workflow__step-header { */
@@ -83,8 +90,8 @@
 
 /* Card */
 .workflow__card-wrapper {
-  height: 14rem;
   width: 24rem;
+  height: 14rem;
   flex-shrink: 0;
   /* background: green; */
 }
@@ -96,6 +103,7 @@
   width: 100%;
   height: 100%;
   perspective: 70rem;
+  transition: var(--transition);
   /* background: darkblue; */
 }
 
@@ -116,12 +124,23 @@
 
 /* ============ Лицевая сторона карточки ============ */
 .workflow__card-front {
-  background-image: url("assets/img/workflow/1.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-color: var(--color-primary-variant);
+  /* background-image: url("assets/img/workflow/Agreement.svg"); */
+  /* background-repeat: no-repeat; */
+  /* background-position: center; */
+  /* background-size: cover; */
   /* background: var(--color-primary); */
   border: 1px solid transparent;
+  /* display: flex; */
+  /* overflow: hidden; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+
+
+.workflow__card-img {
+  height: 100%;
 }
 
 .workflow__card-title {
@@ -139,10 +158,19 @@
 .workflow__card-back {
   /* background: blue; */
   /* background: var(--color-primary); */
+  font-size: .8rem;
   border: 1px solid var(--color-primary-variant);
   background: var(--color-bg);
-  transform: rotateY(180deg);
-  padding: 1rem;
+  transform: rotateY(180deg) ;
+  padding: .5rem;
+}
+
+.workflow__card-back p {
+  margin-bottom: .3rem;
+}
+
+.workflow__card-flip {
+
 }
 
 .workflow__card.workflow__card-flip .workflow__card-front {
@@ -154,23 +182,27 @@
 }
 
 @media screen and (max-width: 1024px) {
-  #workflow article {
+  .workflow__step {
+    flex-direction: column-reverse !important;
+    align-items: center;
     /* width: 100%; */
-    width: var(--container-width-md);
+    /* width: var(--container-width-md); */
+    margin-left: 0;
+    margin-right: 0;
     /* padding: 0 2rem; */
   }
 
 }
 
 @media screen and (max-width: 600px) {
-  #workflow article {
-    flex-direction: column !important;
+  .workflow__step {
+    /* flex-direction: column !important; */
     /* width: var(--container-width-md); */
     /* padding: 0 2rem; */
   }
 
   .workflow__card-wrapper {
-    width: 100%;
+    width: 100% !important;
     height: auto;
     aspect-ratio: 24 / 14;
   }

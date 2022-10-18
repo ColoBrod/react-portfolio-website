@@ -12,6 +12,12 @@
   transition: var(--transition);
   display: flex;
   flex-direction: column;
+  gap: .6rem;
+  user-select: none;
+}
+
+.portfolio__item:hover {
+  cursor: pointer;
 }
 
 .portfolio__item:hover {
@@ -25,15 +31,56 @@
 }
 
 .portfolio__item-image:hover {
-  cursor: pointer;
+}
+
+p.portfolio__item-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 .5rem;
+  /* font-size: .9rem; */
+}
+
+.portfolio__item-customer {
+  margin-right: auto;
+  max-width: 82%;
+  /* line-height: .9rem; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  line-clamp: 1; 
+  -webkit-box-orient: vertical;
+}
+.portfolio__item-date {
+  /* margin-left: auto; */
 }
 
 .portfolio__item h3 {
-  margin-top: 1.2rem;
+  margin-top: .6rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  line-clamp: 1; 
+  -webkit-box-orient: vertical;
+  /* Hide text */
+  /* flex-shrink: 0; */
+  /* text-overflow: ellipsis; */
+  /* overflow: hidden; */
+  /* white-space: nowrap; */
 }
 
 .portfolio__item-description {
-  margin-bottom: 1.2rem;
+  /* margin-top: .6rem; */
+  font-size: .9rem;
+  font-style: italic;
+  /* margin-bottom: 1.2rem; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+    line-clamp: 4; 
+    -webkit-box-orient: vertical;
 }
 
 .portfolio__item-buttons {
@@ -41,6 +88,29 @@
   gap: 1rem;
   /* margin-top: 1.2rem; */
   margin-top: auto;
+  justify-content: center;
+}
+
+.portfolio__item-buttons .btn {
+  /* display: none; */
+  border-radius: 1rem;
+  padding: .4rem .8rem;
+  font-size: 0.9rem;
+}
+
+/* ========== 1440px ===========*/
+@media screen and (max-width: 1440px) {
+  /* .portfolio__container { */
+  /*   grid-template-columns: repeat(2, 1fr); */
+  /* } */
+}
+
+
+/* ========== 880px ===========*/
+@media screen and (max-width: 880px) {
+  /* .portfolio__container { */
+  /*   grid-template-columns: repeat(1, 1fr); */
+  /* } */
 }
 
 /* ========== Medium Devices ========== */

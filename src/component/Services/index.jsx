@@ -2,42 +2,22 @@ import React from 'react';
 import './index.css';
 import {BiCheck} from 'react-icons/bi';
 
-const service = [
-  {
-    groupName: "Frontend",
-    list: [
-      "Ipsum dolor",
-      "Ipsum dolor",
-      "Ipsum dolor",
-      "Ipsum dolor",
-    ],
-  },
-  {
-    groupName: "Frontend",
-    list: [
-      "Ipsum dolor",
-      "Ipsum dolor",
-      "Ipsum dolor",
-      "Ipsum dolor",
-    ],
-  },
-  {
-    groupName: "Frontend",
-    list: [
-      "Ipsum dolor",
-      "Ipsum dolor",
-      "Ipsum dolor",
-      "Ipsum dolor",
-    ],
-  },
-];
+import service from './data';
+
+import lc from './locales';
 
 class Services extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+    const { ln } = this.props;
+    lc.setLanguage(ln);
     return (
       <section id="services">
-        <h5>What I Offer</h5>
-        <h2>Services</h2>
+        <h5>{ lc.h5 }</h5>
+        <h2>{ lc.h2 }</h2>
 
         <div className="container services__container">
           { service.map((item, i) => this.renderItem(item, i)) }

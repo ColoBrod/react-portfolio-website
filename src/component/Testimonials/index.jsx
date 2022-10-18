@@ -10,98 +10,100 @@ import 'swiper/css/pagination';
 import './index.css';
 import "/node_modules/flag-icons/css/flag-icons.min.css";
 
-import img1 from '../../assets/img/client/1.jpeg';
-import img2 from '../../assets/img/client/2.jpeg';
-import img3 from '../../assets/img/client/3.jpeg';
-import img4 from '../../assets/img/client/4.jpeg';
-import img5 from '../../assets/img/client/5.jpeg';
-import img6 from '../../assets/img/client/6.jpeg';
-import img7 from '../../assets/img/client/7.jpeg';
-import img8 from '../../assets/img/client/8.jpeg';
-import img9 from '../../assets/img/client/9.jpeg';
+import data from './data';
+import lc from './locales';
 
-const data = [
-  {
-    name: "Ceilidh McGrath",
-    img: img1,
-    country: "ru",
-    date: new Date(),
-    review: "Nicholas did good work and goes the exstra mile to do the job in a good matterNicholas did good work and goes the exstra mile to do the job in a good matter",
-  },
-  {
-    name: "Ceilidh McGrath",
-    img: img2,
-    country: "es",
-    date: new Date(),
-    review: "Nicholas did good work and goes the exstra mile to do the job in a good matter",
-  },
-  {
-    name: "Ceilidh McGrath",
-    img: img3,
-    country: "us",
-    date: new Date(),
-    review: "Nicholas did good work and goes the exstra mile to do the job in a good matter",
-  },
-  // {
-  //   name: "Ceilidh McGrath",
-  //   img: img4,
-  //   country: "ua",
-  //   date: new Date(),
-  //   review: "Nicholas did good work and goes the exstra mile to do the job in a good matter",
-  // },
-  // {
-  //   name: "Ceilidh McGrath",
-  //   img: img5,
-  //   country: "ru",
-  //   date: new Date(),
-  //   review: "Nicholas did good work and goes the exstra mile to do the job in a good matter",
-  // },
-  // {
-  //   name: "Ceilidh McGrath",
-  //   img: img6,
-  //   country: "fi",
-  //   date: new Date(),
-  //   review: "Nicholas did good work and goes the exstra mile to do the job in a good matter",
-  // },
-];
+import stars from 'assets/img/stars.svg';
+// import { AiFillStar } from 'react-icons/ai';
+
+import formatDate from 'fn/format-date';
 
 class Testimonials extends React.Component {
   render() {
     const pagination = { clickable: true }
+    const { ln } = this.props;
+    lc.setLanguage(ln);
     return (
       <section id='testimonials'>
-        <h5>Review from clients</h5>
-        <h2>Testimonials</h2>
+        <h5>{ lc.h5 }</h5>
+        <h2>{ lc.h2 }</h2>
 
-        <Swiper 
-          modules={[Pagination]}
-          className="container container__testimonials"
-          spaceBetween={50}
-          slidesPerView={1}
-          pagination={{ ...pagination }}
-        >
-          {
-            data.map((testimonial, index) => 
-              this.renderItem(testimonial, index))
-          }
-        </Swiper>
+        <div className="container container__testimonials">
+          <p className="container__testimonials-description">
+            { lc.formatString(lc.description, <b>UpWork</b>) }
+          </p>
+          <Swiper 
+            modules={[Pagination]}
+            className="container__testimonials-swiper"
+            spaceBetween={50}
+            slidesPerView={1}
+            pagination={{ ...pagination }}
+          >
+            {
+              data.map((testimonial, index) => 
+                this.renderItem(testimonial, index))
+            }
+          </Swiper>
+        </div>
+
       </section>
     );
   }
 
   renderItem(testimonial, index) {
-    const { name, img, country, date, review } = testimonial;
+    const { name, img, country, date, review, grade } = testimonial;
+    const { ln } = this.props;
     return(
       <SwiperSlide key={index} className="testimonial">
-        <div className="client__avatar">
-          <img src={img} alt="client__avatar" />
+        <div className="testimonial__top">
+          <div className="client__avatar-wrapper">
+            <div className="client__avatar">
+              {
+                img 
+                  ? <img src={img} alt="" /> 
+                  : <div className='client__avatar-XX'>{ this.getInitials(name) }</div>
+              }
+            </div>
+            {
+              country
+                ? <span className={`fi fi-${country}`}></span>
+                : null
+            }
+          </div>
+          <div className="client__info">
+            <h5 className="client__name">{name}</h5>
+            <span className="client__date">
+              {
+                date ? formatDate(date, ln) : null
+              }
+            </span>
+            <div className="client__grade">
+              <div className="client__grade-bg">
+                <div 
+                  className="client__grade-bg-blue"
+                  style={{
+                    width: `${grade * 20}%`,
+                  }}
+                ></div>
+              </div>
+              <div className="client__grade-number">
+                { grade.toPrecision(3) }
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <h5 className="client__name">{name}</h5>
+        <div className="testimonial__bottom">
           <small className='client__review'>{review}</small>
         </div>
       </SwiperSlide>
     );
+  }
+
+  getInitials(name) {
+    const regex = /^([A-ZА-Я]).* ([A-ZА-Я]).*$/;
+    const found = name.match(regex);
+    if (found) return found[1] + found[2];
+    else return "";
   }
 }
 

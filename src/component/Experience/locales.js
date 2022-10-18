@@ -15,8 +15,14 @@ const locales = new LocalizedStrings({
       uiux: "Web Design (UI/UX)",
       desktop: "Desktop Apps",
       mobile: "Mobile Apps",
+      lang: "Foreign languages",
     },
     lvl: ["Beginner", "Intermediate", "Experienced"],
+    description: {
+      native: "Native Speaker",
+      b2: "B2 Intermediate",
+      c2: "C2 Advanced",
+    },
   },
   ru: {
     title: {
@@ -32,8 +38,14 @@ const locales = new LocalizedStrings({
       uiux: "Веб-дизайн (UI/UX)",
       desktop: "Десктопные приложения",
       mobile: "Мобильные приложения",
+      lang: "Иностранные языки",
     },
     lvl: ["Начальный", "Средний", "Продвинутый"],
+    description: {
+      native: "Родной язык",
+      b2: "B2 Intermediate",
+      c2: "C2 Advanced",
+    },
   },
 });
 
