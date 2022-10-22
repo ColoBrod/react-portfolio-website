@@ -1,0 +1,22 @@
+@media screen and (min-width: 1025px) and (min-height: 857px) {
+  .modal-box {
+    // &__inner::before { content: "DESKTOP: normal"; }
+    
+    &__inner {
+      border-radius: 2rem;
+      width: 1000px;
+      height: 856px;
+    }
+
+    &__image-wrapper {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+
+    &__description {
+      flex-shrink: 1;
+      flex-grow: 1;
+      overflow-y: scroll;
+    }
+  }
+}

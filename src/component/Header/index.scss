@@ -1,19 +1,33 @@
 section#header {
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+  
   margin-top: 0;
-  height: 100vh;
+  // TODO
+  // height: 100vh;
   padding-top: 4rem;
-  overflow: hidden;
+  padding-bottom: 8rem;
+  // TODO
+  // overflow: hidden;
 }
 
 .header__container {
-  text-align: center;
-  height: 100%;
+  flex-basis: 100%;
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   position: relative;
+  text-align: center;
 }
 
 /* =========== Call to Action =========== */
 .cta {
   margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -25,9 +39,11 @@ section#header {
   flex-direction: column;
   align-items: center;
   gap: 0.8rem;
+
   position: absolute;
   left: 0;
-  bottom: 3rem;
+  bottom: 0rem;
+  // bottom: 3rem;
   font-size: 2rem;
 }
 
@@ -39,13 +55,23 @@ section#header {
 }
 
 /* =========== Image =========== */
+.me-wrapper {
+  margin-top: auto;
+  // flex-grow: 1;
+  // display: flex;
+  // align-items: flex-end;
+}
+
 .me {
   /* background: linear-gradient(var(--color-primary), transparent); */
+
+  // TODO
   width: 22rem;
-  height: 30rem;
-  margin-top: 4rem;
-  position: absolute;
-  left: calc(50% - 11rem);
+  aspect-ratio: 22 / 30;
+  margin: auto;
+  margin-top: auto;
+  // position: absolute;
+  // left: calc(50% - 11rem);
   border-radius: 11rem 11rem 0 0;
   overflow: hidden;
 }
@@ -57,7 +83,7 @@ section#header {
 .scroll__down {
   position: absolute;
   right: -2.3rem;
-  bottom: 5rem;
+  bottom: 1rem;
   transform: rotate(270deg);
   font-weight: 300;
   font-size: 0.9rem;

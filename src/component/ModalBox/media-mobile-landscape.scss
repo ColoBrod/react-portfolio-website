@@ -1,0 +1,19 @@
+@media screen and (max-width: 600px) and (min-aspect-ratio: 1 / 1) {
+  .modal-box {
+    // &__inner::before { content: "MOBILE: landscape"; }
+
+    &__inner {  
+      overflow-y: scroll;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__image-wrapper {
+      aspect-ratio: 16 / 9;
+      &_portrait {
+        aspect-ratio: 10 / 10;
+      }
+    }
+  }
+
+}

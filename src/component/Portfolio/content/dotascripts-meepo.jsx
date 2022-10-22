@@ -23,6 +23,7 @@ const data = {
     { src: img3, comment: "Изменение алгоритмов работы в зависимости от предпочитаемой игроком \"обуви\"." },
     { src: img4, comment: "Чередование способностей героя." },
   ],
+  sliderOrientation: "portrait",
   customer: "Иван Сергеичев",
   country: 'ru',
   date: new Date('March, 2018'),

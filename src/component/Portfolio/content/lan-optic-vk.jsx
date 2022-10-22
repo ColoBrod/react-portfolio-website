@@ -26,6 +26,7 @@ const data = {
     { src: img7, comment: "Геолокация, график работы офиса." },
     { src: img8, comment: "Страница с товарами \"WiFi-Роутеры\"." },
   ],
+  sliderOrientation: "portrait",
   customer: "ООО «Лан-Оптик»",
   country: 'ru',
   date: new Date('June, 2019'),

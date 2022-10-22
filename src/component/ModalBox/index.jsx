@@ -10,7 +10,14 @@ import 'swiper/css/navigation';
 // import 'swiper/css/autoplay';
 
 // Styles
-import './index.css';
+import './index.scss';
+import './media-desktop.scss';
+import './media-desktop-ultrawide.scss';
+import './media-tablet-portrait.scss';
+import './media-tablet-landscape.scss';
+import './media-mobile-portrait.scss';
+import './media-mobile-landscape.scss';
+
 
 import formatDate from 'fn/format-date';
 
@@ -22,6 +29,7 @@ class ModalBox extends React.Component {
     this.state = {
       display: "none",
       img: [],
+      sliderOrientation: "",
       title: "",
       description: "",
       github: "",
@@ -42,6 +50,7 @@ class ModalBox extends React.Component {
     const { 
       display, 
       img, 
+      sliderOrientation = "", 
       title, 
       description, 
       customer,
@@ -100,10 +109,11 @@ class ModalBox extends React.Component {
   }
 
   renderSlide(slide, index) {
+    const {sliderOrientation} = this.state;
     return(
       <SwiperSlide key={index} className="modal-box__slide">
         <figure className="modal-box__slide">
-          <div className="modal-box__image-wrapper">
+          <div className={`modal-box__image-wrapper modal-box__image-wrapper_${sliderOrientation}`}>
             <img src={ slide.src } alt="Alternative text" />
           </div>
           <figcaption>{ slide.comment }</figcaption>
@@ -126,6 +136,7 @@ class ModalBox extends React.Component {
       title, 
       description, 
       img, 
+      sliderOrientation = "",
       customer,
       country,
       date,
@@ -133,7 +144,7 @@ class ModalBox extends React.Component {
       liveDemo 
     } = e.detail;
     this.setState({
-      title, img, customer, country, date, description, github, liveDemo
+      title, img, sliderOrientation, customer, country, date, description, github, liveDemo
     });
     this.show();
   }
