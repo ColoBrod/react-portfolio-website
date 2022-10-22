@@ -37,6 +37,7 @@ class ModalBox extends React.Component {
       customer: "",
       country: "",
       date: null,
+      swiper: null,
     }
     this.showPortfolioItem = this.showPortfolioItem.bind(this);
     this.renderSlide = this.renderSlide.bind(this);
@@ -88,6 +89,7 @@ class ModalBox extends React.Component {
               slidesPerView={1}
               pagination={{ ...pagination }}
               autoplay={{ ...autoplay }}
+              onSwiper={(swiper) => this.swiper = swiper}
               // navigation={true}
             >
               {
@@ -158,7 +160,9 @@ class ModalBox extends React.Component {
   hide() {
     this.setState({
       display: "none",
+      img: [],
     });
+    this.swiper.activeIndex = 0;
   }
 }
 
