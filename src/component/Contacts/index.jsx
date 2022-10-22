@@ -1,4 +1,5 @@
 import React from 'react';
+import Global from 'Global';
 import './index.css';
 import Blockquote from 'component/Blockquote';
 
@@ -11,6 +12,8 @@ import cfg from './config';
 import lc from './locales'
 
 class Contacts extends React.Component {
+  static contextType = Global;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -26,7 +29,7 @@ class Contacts extends React.Component {
   }
 
   render() {
-    const { ln } = this.props;
+    const { ln } = this.context;
     lc.setLanguage(ln);
     const { form, isSent } = this.state;
     return (

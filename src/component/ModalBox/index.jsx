@@ -1,4 +1,5 @@
 import React from 'react';
+import Global from 'Global';
 
 // SwiperJS
 import { Pagination, Autoplay, Navigation } from 'swiper';
@@ -14,6 +15,8 @@ import './index.css';
 import formatDate from 'fn/format-date';
 
 class ModalBox extends React.Component {
+  static contextType = Global;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -34,7 +37,7 @@ class ModalBox extends React.Component {
   }
 
   render() {
-    const { ln } = this.props;
+    const { ln } = this.context;
 
     const { 
       display, 

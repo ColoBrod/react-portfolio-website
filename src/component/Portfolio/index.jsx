@@ -1,4 +1,7 @@
 import React from 'react';
+import Global from 'Global';
+import lc from './locales';
+
 import './index.css';
 
 import portfolio from './data';
@@ -6,18 +9,22 @@ import portfolio from './data';
 import formatDate from 'fn/format-date';
 
 class Portfolio extends React.Component {
+  static contextType = Global;
+
   constructor(props) {
     super(props);
   }
 
   render() {
+    const { ln } = this.context;
+    lc.setLanguage(ln);
     return (
       <section id="portfolio">
-        <h5>My Recent Work</h5>
-        <h2>Portfolio</h2>
+        <h5>{lc.h5}</h5>
+        <h2>{lc.h2}</h2>
 
         <div className="container portfolio__container">
-          { portfolio.map((item, i) => <PortfolioItem ln={this.props.ln} key={i} item={item} />) }
+          { portfolio.map((item, i) => <PortfolioItem key={i} item={item} />) }
         </div>
       </section>
     );
@@ -26,6 +33,8 @@ class Portfolio extends React.Component {
 }
 
 class PortfolioItem extends React.Component {
+  static contextType = Global;
+
   constructor(props) {
     super(props);
     // this.shortDescription = this.shortDescription.bind(this);
@@ -33,7 +42,8 @@ class PortfolioItem extends React.Component {
   }
 
   render() {
-    const { item, ln } = this.props;
+    const { ln } = this.context;
+    const { item } = this.props;
     const { 
       title, 
       description, 

@@ -4,6 +4,7 @@ import './index.css';
 import lc from './locales.js';
 
 class ToolTip extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {

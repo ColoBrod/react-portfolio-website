@@ -47,6 +47,29 @@ const locales = new LocalizedStrings({
       c2: "C2 Advanced",
     },
   },
+  es: {
+    title: {
+      h5: "Que Habilidades Tengo",
+      h2: "Mi Experiencia",
+    },
+    section: {
+      frontend: "Desarrollo Front-end",
+      backend: "Desarrollo Back-end",
+      administration: "Administracion del Sistema",
+      misc: "Miscelánea",
+      cms: "Sistemas de Gestión de Contenidos (CMS)",
+      uiux: "Diseño Web (UI/UX)",
+      desktop: "Aplicaciones de Escritorio",
+      mobile: "Aplicaciones Móviles",
+      lang: "Idiomas extranjeros",
+    },
+    lvl: ["Principiante", "Intermedio", "Experimentado"],
+    description: {
+      native: "Hablante Nativo",
+      b2: "B2 Intermedio",
+      c2: "C2 Avanzado",
+    },
+  },
 });
 
 export default locales;

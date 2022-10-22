@@ -1,23 +1,27 @@
 import React from 'react';
+import Global from 'Global';
+import lc from './locales';
 
 import './index.css';
 
 import device from 'fn/device-info';
 
-
-
 import data from './data';
 
 class Workflow extends React.Component {
+  static contextType = Global;
+  
   constructor(props) {
     super(props);
   }
 
   render() {
+    const { ln } = this.context;
+    lc.setLanguage(ln);
     return (
       <section id="workflow">
-        <h5>Как я работаю?</h5>
-        <h2>Рабочий процесс</h2>
+        <h5>{lc.h5}</h5>
+        <h2>{lc.h2}</h2>
 
         <div className="container container__workflow">
           { data.map((step, i) => this.renderStep(step, i)) }

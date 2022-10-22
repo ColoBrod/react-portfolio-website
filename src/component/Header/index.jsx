@@ -6,10 +6,13 @@ import HeaderSocials from './HeaderSocials.jsx';
 
 import lc from './locales.js';
 
+import Global from 'Global';
 
 class Header extends React.Component {
+  static contextType = Global;
+
   render() {
-    const { ln } = this.props;
+    const { ln } = this.context;
     lc.setLanguage(ln);
     return (
       <section id="header">
@@ -18,12 +21,12 @@ class Header extends React.Component {
           <h5>{lc.hello}</h5>
           <h1>{lc.name}</h1>
           <h5 className="text-light">{lc.speciality}</h5>
-          <CTA ln={ln}/>
+          <CTA/>
           <HeaderSocials />
           <div className="me">
             <img src={Me} alt="" />
           </div>
-          <a href="#contacts" className="scroll__down">Scroll Down</a>
+          <a href="#contacts" className="scroll__down">{lc.scrollDown}</a>
         </div>
       </section>
     );

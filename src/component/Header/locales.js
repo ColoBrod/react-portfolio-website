@@ -13,10 +13,18 @@ const locales = new LocalizedStrings({
     hello: "Здравствуйте! Меня зовут",
     name: "Николай Лазарев",
     speciality: "Fullstack веб-разработчик",
-    scrollDown: "Вниз",
+    scrollDown: "Вниз страницы",
     downloadCV: "Скачать резюме",
     letsTalk: "Связаться",
-  }
+  },
+  es: {
+    hello: "¡Hola! Soy",
+    name: "Nicolás Lázarev",
+    speciality: "Fullstack Desarrollador Web",
+    scrollDown: "Desplazarse hacia abajo",
+    downloadCV: "Descargar currículum",
+    letsTalk: "Hablemos",
+  },
 })
 
 export default locales;

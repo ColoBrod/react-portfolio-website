@@ -12,37 +12,37 @@ import About from './component/About';
 import Experience from './component/Experience';
 import Portfolio from './component/Portfolio';
 import Workflow from './component/Workflow';
-import Services from './component/Services';
+// import Services from './component/Services';
 import Testimonials from './component/Testimonials';
 import Contacts from './component/Contacts';
-import PaymentDetails from './component/PaymentDetails';
+// import PaymentDetails from './component/PaymentDetails';
 import Footer from './component/Footer';
 
 import link from 'links';
 
+// Context
+import Global from 'Global';
+
+const languages = ["en", "ru", "es"]; 
+
 // TODO 
-// * Перед компиляцией (для продакшена) необходимо добавить домен в package.json
-// * Исправить ошибки компиляции, убрать Варнинги.
-// * Полный перевод на Русский и Английский языки
-// * Добавить раздел с реквизитами для оплаты
-// * На скрине About добавить ссылки
-// * Полностью протестировать сайт перед публикацией
-// * Полностью протестировать сайт после публикации
+
 // * Автоматическое проигрывание слайдера в Портфолио
-// * Закруглить кнопки в Портфолио
 // * Отсортировать работы в портфолио
-// * Добавить контекст для переключения языка
 // * Поработать с адаптивностью модалки
 // * Слайдер - выбирать первый слайд при открытии.
 // * Гриды для выравнивания элементов по высоте.
 
-const languages = ["en", "ru", "es"]; //, "es"
+// * Исправить ошибки компиляции, убрать Варнинги.
+// * Полностью протестировать сайт перед публикацией
+// * Полностью протестировать сайт после публикации
+
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ln: this.getBrowserLn(),
+      ln: this.getWebBrowserLn(),
     }
     this.resizeObserver = new ResizeObserver(this.updateDimensions);
     this.switchLn = this.switchLn.bind(this);
@@ -52,26 +52,34 @@ class App extends React.Component {
   render() {
     let { ln } = this.state;
     return (
-      <>
+      <Global.Provider value={{ln}}>
         {/* FLOATING ITEMS */}
-        <Nav ln={ln} />
-        <LnSwitcher ln={ln} languages={languages} switchLn={this.switchLn} />
-        <ToolTip ln={ln} /> 
-        <ModalBox ln={ln} />
+        <Nav/>
+        <LnSwitcher languages={languages} switchLn={this.switchLn} />
+        <ToolTip /> 
+        <ModalBox />
 
         {/* SECTIONS */}
-        <Header ln={ln} />
-        <About ln={ln} />
-        <Portfolio ln={ln} />
-        <Experience ln={ln} />
-        <Workflow ln={ln} />
-        {/* <Services ln={ln} /> */}
-        <Testimonials ln={ln} />
-        <Contacts ln={ln} />
+        <Header />
+        <About />
+        <Portfolio />
+        <Experience />
+        <Workflow />
+        {/*<Services ln={ln} />*/}
+        <Testimonials />
+        <Contacts />
         {/*<PaymentDetails ln={ln} />*/}
-        <Footer ln={ln} />
-      </>
+        <Footer />
+      </Global.Provider>
     );
+  }
+
+  componentDidMount() {
+    this.resizeObserver.observe(document.body);
+  }
+
+  componentWillUnmount() {
+    this.resizeObserver.unobserve(document.body);
   }
 
   updateDimensions() {
@@ -85,22 +93,14 @@ class App extends React.Component {
     document.dispatchEvent(event);
   }
 
-  componentDidMount() {
-    this.resizeObserver.observe(document.body);
-  }
-
-  componentWillUnmount() {
-    this.resizeObserver.unobserve(document.body);
-  }
-
-  getBrowserLn() {
+  getWebBrowserLn() {
     let ln = window.navigator.language;
     ln = ln.substring(0,2);
     switch (ln) {
       case 'ru': return 'ru';
       case 'en': return 'en';
       case 'es': return 'es';
-      default: return 'en';
+      default: return 'ru';
     }
   }
 

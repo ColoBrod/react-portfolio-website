@@ -1,15 +1,12 @@
 import React from 'react';
 import './index.css';
 // Флаги взяты с сайта https://flagicons.lipis.dev/
-import ru from '../../assets/icon/ln/ru.svg';
-import en from '../../assets/icon/ln/en.svg';
-import es from '../../assets/icon/ln/es.svg';
 
-// <img src={ru} className="ln-switcher__icon" alt="ru" />
-// <img src={en} className="ln-switcher__icon" alt="en" />
-// <img src={es} className="ln-switcher__icon" alt="es" />
+import Global from 'Global';
 
 class LnSwitcher extends React.Component {
+  static contextType = Global;
+
   constructor(props) {
     super(props);
     this.handleSwitch = this.handleSwitch.bind(this);
@@ -26,7 +23,7 @@ class LnSwitcher extends React.Component {
   }
 
   renderLn(lang, i) {
-    const { ln } = this.props;
+    const { ln } = this.context;
     return(
       <div key={i} className={`ln-switcher__ln ${ln == lang && 'active'}`} onClick={() => this.handleSwitch(lang)}>
         {lang.toUpperCase()}

@@ -1,5 +1,5 @@
 import React from 'react';
-import MediaQuery from 'react-responsive'
+import MediaQuery from 'react-responsive';
 
 import styles from './index.css';
 
@@ -8,7 +8,11 @@ import device from 'fn/device-info';
 
 import elements from 'links';
 
+import Global from 'Global';
+
 class Nav extends React.Component {
+  static contextType = Global;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +26,7 @@ class Nav extends React.Component {
   }
 
   render() {
-    const { ln } = this.props;
+    const { ln } = this.context;
     lc.setLanguage(ln);
     const { activeNav } = this.state;
     return (
@@ -91,7 +95,6 @@ class Nav extends React.Component {
 class NavElement extends React.Component {
   constructor(props) {
     super(props);
-    this.handleMouseClick = this.handleMouseClick.bind(this);
     this.handleMouseEnter = this.handleMouseEnter.bind(this);
     this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
@@ -104,7 +107,6 @@ class NavElement extends React.Component {
           ref="a"
           href={ `#${id}` } 
           className={ isActive }
-          onClick={this.handleMouseClick}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
         >
@@ -112,9 +114,6 @@ class NavElement extends React.Component {
         </a>
       </MediaQuery>
     );
-  }
-
-  handleMouseClick() {
   }
 
   handleMouseEnter() {

@@ -1,9 +1,10 @@
 import React from 'react';
+import Global from 'Global';
 
 // SwiperJS
 import { Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// import { Swiper, SwiperSlide } from 'swiper/react';
+
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -13,15 +14,16 @@ import "/node_modules/flag-icons/css/flag-icons.min.css";
 import data from './data';
 import lc from './locales';
 
-import stars from 'assets/img/stars.svg';
-// import { AiFillStar } from 'react-icons/ai';
+// import stars from 'assets/img/stars.svg';
 
 import formatDate from 'fn/format-date';
 
 class Testimonials extends React.Component {
+  static contextType = Global;
+
   render() {
     const pagination = { clickable: true }
-    const { ln } = this.props;
+    const { ln } = this.context;
     lc.setLanguage(ln);
     return (
       <section id='testimonials'>
@@ -52,7 +54,7 @@ class Testimonials extends React.Component {
 
   renderItem(testimonial, index) {
     const { name, img, country, date, review, grade } = testimonial;
-    const { ln } = this.props;
+    const { ln } = this.context;
     return(
       <SwiperSlide key={index} className="testimonial">
         <div className="testimonial__top">

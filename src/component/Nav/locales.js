@@ -23,6 +23,17 @@ const locales = new LocalizedStrings({
     contacts: "Контакты",
     "payment-details": "Реквизиты",
   },
+  es: {
+    header: "Hogar",
+    about: "Sobre mí",
+    experience: "Experiencia",
+    portfolio: "Portafolio",
+    workflow: "Flujo de Trabajo",
+    services: "Servicios",
+    testimonials: "Testimonios",
+    contacts: "Contactos",
+    "payment-details": "Detalles del Pago",
+  },
 });
 
 export default locales;

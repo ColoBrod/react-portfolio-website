@@ -1,15 +1,21 @@
 import React from 'react';
+import Global from 'Global';
 import './index.css';
+import lc from './locales';
 
 import links from 'links';
 import lcLinks from '../Nav/locales';
 
 class Footer extends React.Component {
+  static contextType = Global;
+  
   render() {
+    const { ln } = this.context;
+    lc.setLanguage(ln);
     return (
       <div id="footer">
         <a className="footer__logo" href="#">
-          Николай Лазарев
+          {lc.fullName}
         </a>
 
         <ul className="footer__permalinks">
@@ -20,7 +26,7 @@ class Footer extends React.Component {
           { links.social.map(this.renderSocial) }
         </div>
         <div className="footer__copyright">
-          <small>&copy; Николай Лазарев. All rights reserved.</small>
+          <small>&copy; {lc.fullName}. {lc.copyright}</small>
         </div>
 
       </div>

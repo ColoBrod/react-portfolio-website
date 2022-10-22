@@ -1,4 +1,5 @@
 import React from 'react';
+import Global from 'Global';
 import './index.css';
 import meAbout from '../../assets/img/me-about.jpg';
 import { FaAward } from 'react-icons/fa';
@@ -14,8 +15,10 @@ const history = {
 };
 
 class About extends React.Component {
+  static contextType = Global;
+
   render() {
-    const { ln } = this.props;
+    const { ln } = this.context;
     lc.setLanguage(ln);
     return (
       <section id="about">
@@ -30,6 +33,12 @@ class About extends React.Component {
           </div>
           <div className="about__content">
             <div className="about__cards">
+
+              <article className="about__card" onClick={() => this.handleClick("#portfolio")}>
+                <VscFolderLibrary className="about__icon"/>
+                <h5>{lc.card.projects.h5}</h5>
+                <small>{lc.card.projects.small}</small>
+              </article>
               <article className="about__card" onClick={() => this.handleClick("#experience")}>
                 <FaAward className="about__icon"/>
                 <h5>{lc.card.experience.h5}</h5>
@@ -40,11 +49,7 @@ class About extends React.Component {
                 <h5>{lc.card.clients.h5}</h5>
                 <small>{lc.card.clients.small}</small>
               </article>
-              <article className="about__card" onClick={() => this.handleClick("#portfolio")}>
-                <VscFolderLibrary className="about__icon"/>
-                <h5>{lc.card.projects.h5}</h5>
-                <small>{lc.card.projects.small}</small>
-              </article>
+              
             </div>
 
             <div>

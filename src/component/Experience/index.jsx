@@ -1,4 +1,5 @@
 import React from 'react';
+import Global from 'Global';
 import './index.css';
 
 import { BsPatchCheckFill } from 'react-icons/bs';
@@ -7,13 +8,15 @@ import data from './data.js';
 import lc from './locales.js';
 
 class Experience extends React.Component {
+  static contextType = Global;
+
   constructor(props) {
     super(props);
     this.renderSection = this.renderSection.bind(this);
   }
 
   render() {
-    const { ln } = this.props;
+    const { ln } = this.context;
     lc.setLanguage(ln);
     
     return (
