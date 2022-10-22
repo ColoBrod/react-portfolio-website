@@ -24,26 +24,19 @@ import link from 'links';
 // * Перед компиляцией (для продакшена) необходимо добавить домен в package.json
 // * Исправить ошибки компиляции, убрать Варнинги.
 // * Полный перевод на Русский и Английский языки
-// * Добавить нормальное резюме
 // * Добавить раздел с реквизитами для оплаты
 // * На скрине About добавить ссылки
 // * Полностью протестировать сайт перед публикацией
 // * Полностью протестировать сайт после публикации
-// * Под отзывами рассказать о своих клиентах, их геолокации
-// * Убрать testimonials.txt
 // * Автоматическое проигрывание слайдера в Портфолио
 // * Закруглить кнопки в Портфолио
 // * Отсортировать работы в портфолио
-// * Убрать отступ в футере
 // * Добавить контекст для переключения языка
 // * Поработать с адаптивностью модалки
 // * Слайдер - выбирать первый слайд при открытии.
 // * Гриды для выравнивания элементов по высоте.
 
-
-
 const languages = ["en", "ru", "es"]; //, "es"
-
 
 class App extends React.Component {
   constructor(props) {
@@ -82,8 +75,6 @@ class App extends React.Component {
   }
 
   updateDimensions() {
-    // console.clear();
-    // console.log(`%cSIZE: ${document.body.clientWidth}x${document.body.clientHeight}`, "color: blue; font-size: 14px;")
     const { section } = link;
     const offsets = [];
     section.forEach(({ id }, i) => {
@@ -116,12 +107,9 @@ class App extends React.Component {
   switchLn(ln) {
     this.setState({ ln });
   }
-
-  setScreen(id) {
-
-  }
-
 }
 
-
 export default App;
+
+
+
