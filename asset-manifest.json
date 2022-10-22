@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-portfolio-website/static/css/main.bb946da7.css",
-    "main.js": "/react-portfolio-website/static/js/main.9d516d91.js",
+    "main.css": "/react-portfolio-website/static/css/main.324e43df.css",
+    "main.js": "/react-portfolio-website/static/js/main.6517596e.js",
     "static/media/me-2.jpg": "/react-portfolio-website/static/media/me-2.1635b1c7318b8ab73786.jpg",
     "static/media/me-about.jpg": "/react-portfolio-website/static/media/me-about.367f79236b2103184778.jpg",
     "static/media/1.png": "/react-portfolio-website/static/media/1.30b1511ff766eef24ba1.png",
@@ -33,7 +33,7 @@
     "static/media/4.jpg": "/react-portfolio-website/static/media/4.85197e4b06aac565c34c.jpg",
     "static/media/mx.svg": "/react-portfolio-website/static/media/mx.e18539f71c1156849ae2.svg",
     "static/media/ea.svg": "/react-portfolio-website/static/media/ea.786adca69a2e53c3248d.svg",
-    "static/media/es.svg": "/react-portfolio-website/static/media/es.e3db1b5f8a2ec8ae87640f32237c01b3.svg",
+    "static/media/es.svg": "/react-portfolio-website/static/media/es.e3db1b5f8a2ec8ae8764.svg",
     "static/media/va.svg": "/react-portfolio-website/static/media/va.cf15a64943f6c7d24a2b.svg",
     "static/media/sv.svg": "/react-portfolio-website/static/media/sv.2b995d455aa93dcba0cf.svg",
     "static/media/Лазарев Николай, резюме - Fullstack-разработчик.pdf": "/react-portfolio-website/static/media/Лазарев Николай, резюме - Fullstack-разработчик.702309fdfcdc6b843c2b.pdf",
@@ -66,7 +66,6 @@
     "static/media/Hand-coding.svg": "/react-portfolio-website/static/media/Hand-coding.418b48196b0d112041d19f524cd68568.svg",
     "static/media/Investor-presentation.svg": "/react-portfolio-website/static/media/Investor-presentation.8fa67916f88a2a8e1e604fdd29e76be8.svg",
     "static/media/om.svg": "/react-portfolio-website/static/media/om.b7d24bf7417e223d1a01.svg",
-    "static/media/qiwi.png": "/react-portfolio-website/static/media/qiwi.63664675ac3df78176b3.png",
     "static/media/af.svg": "/react-portfolio-website/static/media/af.ecae91f83076777898e1.svg",
     "static/media/Creation-process.svg": "/react-portfolio-website/static/media/Creation-process.2803614b765f623ab248480870de651d.svg",
     "static/media/un.svg": "/react-portfolio-website/static/media/un.4388dfb01646ff8dc71d.svg",
@@ -112,7 +111,6 @@
     "static/media/gu.svg": "/react-portfolio-website/static/media/gu.bc2f83639f0ccad757e5.svg",
     "static/media/sz.svg": "/react-portfolio-website/static/media/sz.1979545a3ca58c338955.svg",
     "static/media/um.svg": "/react-portfolio-website/static/media/um.bac94dcf88fe62fc86eb.svg",
-    "static/media/en.svg": "/react-portfolio-website/static/media/en.d8b63826d8d60830324e70ab0b5452f0.svg",
     "static/media/us.svg": "/react-portfolio-website/static/media/us.8412fb0355c0a3f451a6.svg",
     "static/media/pf.svg": "/react-portfolio-website/static/media/pf.2a98d684e5ad8fdd1d77.svg",
     "static/media/ug.svg": "/react-portfolio-website/static/media/ug.e63befb93d196f2cddd3.svg",
@@ -121,7 +119,7 @@
     "static/media/ar.svg": "/react-portfolio-website/static/media/ar.880c69d555b2b40e56e7.svg",
     "static/media/er.svg": "/react-portfolio-website/static/media/er.4e8d72f968ec26604a65.svg",
     "static/media/kg.svg": "/react-portfolio-website/static/media/kg.4de0815173dfd18b788c.svg",
-    "static/media/stars.svg": "/react-portfolio-website/static/media/stars.56c67661c1b56ad6954a63a9cf2e1a67.svg",
+    "static/media/stars.svg": "/react-portfolio-website/static/media/stars.56c67661c1b56ad6954a.svg",
     "static/media/al.svg": "/react-portfolio-website/static/media/al.aa5df04283b60e8c3cf4.svg",
     "static/media/cc.svg": "/react-portfolio-website/static/media/cc.d20d3e0cf1bec347594d.svg",
     "static/media/aq.svg": "/react-portfolio-website/static/media/aq.2405e38d3ce9174eee60.svg",
@@ -270,7 +268,7 @@
     "static/media/wf.svg": "/react-portfolio-website/static/media/wf.9f3414f419d49e43313f.svg",
     "static/media/yt.svg": "/react-portfolio-website/static/media/yt.c62bc19c55550c418046.svg",
     "static/media/be.svg": "/react-portfolio-website/static/media/be.5b3a82a296b071e1440a.svg",
-    "static/media/ru.svg": "/react-portfolio-website/static/media/ru.7e04b988972d41f5c36902a31b818119.svg",
+    "static/media/ru.svg": "/react-portfolio-website/static/media/ru.7e04b988972d41f5c369.svg",
     "static/media/co.svg": "/react-portfolio-website/static/media/co.650be7bf6524161dd3fb.svg",
     "static/media/ic.svg": "/react-portfolio-website/static/media/ic.5217cbc3b14b1f23840f.svg",
     "static/media/xx.svg": "/react-portfolio-website/static/media/xx.378d1d90ceb9fe14f1d6.svg",
@@ -307,11 +305,11 @@
     "static/media/de.svg": "/react-portfolio-website/static/media/de.6435bf24d148ca7248e7.svg",
     "static/media/bd.svg": "/react-portfolio-website/static/media/bd.0ad8c443ef4d47ea0497.svg",
     "static/media/id.svg": "/react-portfolio-website/static/media/id.f624e2c8444a7794b357.svg",
-    "main.bb946da7.css.map": "/react-portfolio-website/static/css/main.bb946da7.css.map",
-    "main.9d516d91.js.map": "/react-portfolio-website/static/js/main.9d516d91.js.map"
+    "main.324e43df.css.map": "/react-portfolio-website/static/css/main.324e43df.css.map",
+    "main.6517596e.js.map": "/react-portfolio-website/static/js/main.6517596e.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb946da7.css",
-    "static/js/main.9d516d91.js"
+    "static/css/main.324e43df.css",
+    "static/js/main.6517596e.js"
   ]
 }
