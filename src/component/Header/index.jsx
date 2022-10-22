@@ -30,11 +30,13 @@ class Header extends React.Component {
           <HeaderSocials />
           <a href="#contacts" className="scroll__down">{lc.scrollDown}</a>
 
-          {/* <h5>{ window.innerWidth }x{window.innerHeight}</h5> */}
-          <h5>{lc.hello}</h5>
-          <h1>{lc.name}</h1>
-          <h5 className="text-light">{lc.speciality}</h5>
-          <CTA/>
+          <div className="top-wrapper">
+            {/* <h5>{ window.innerWidth }x{window.innerHeight}</h5> */}
+            <h5>{lc.hello}</h5>
+            <h1>{lc.name}</h1>
+            <h5 className="text-light">{lc.speciality}</h5>
+            <CTA/>
+          </div>
           <div className="me-wrapper">
             <div className="me">
               <img src={Me} alt="" />

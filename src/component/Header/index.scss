@@ -54,6 +54,13 @@ section#header {
   background: var(--color-primary);
 }
 
+.top-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
 /* =========== Image =========== */
 .me-wrapper {
   margin-top: auto;
