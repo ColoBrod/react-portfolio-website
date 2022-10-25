@@ -1,7 +1,7 @@
 import React from 'react';
 import Global from 'Global';
 import './index.css';
-import meAbout from '../../assets/img/me-about.jpg';
+import meAbout from '../../assets/img/me-about.png';
 import { FaAward } from 'react-icons/fa';
 import { FiUsers } from 'react-icons/fi';
 import { VscFolderLibrary } from 'react-icons/vsc';

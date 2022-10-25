@@ -70,7 +70,7 @@ section#header {
 }
 
 .me {
-  /* background: linear-gradient(var(--color-primary), transparent); */
+  background: linear-gradient(var(--color-primary), transparent); 
 
   // TODO
   width: 22rem;
@@ -84,7 +84,7 @@ section#header {
 }
 
 .me > img {
-  transform: scale(1.3);
+  // transform: scale(1.3);
 }
 
 .scroll__down {
