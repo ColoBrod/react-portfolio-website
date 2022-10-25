@@ -17,9 +17,21 @@ const history = {
 class About extends React.Component {
   static contextType = Global;
 
+  constructor(props) {
+    super(props);
+    this.imgMouseEnter = this.imgMouseEnter.bind(this);
+    this.imgMouseLeave = this.imgMouseLeave.bind(this);
+    this.imgClick = this.imgClick.bind(this);
+    this.state = {
+      imgActive: false,
+    };
+  }
+
   render() {
     const { ln } = this.context;
     lc.setLanguage(ln);
+
+    const imgActiveClassName = this.state.imgActive ? "about__me-image_active" : "";
     return (
       <section id="about">
         <h5>{lc.title.h5}</h5>
@@ -27,7 +39,12 @@ class About extends React.Component {
 
         <div className="container about__container">
           <div className="about__me">
-            <div className="about__me-image">
+            <div 
+              className={`about__me-image ${imgActiveClassName}`}
+              onMouseEnter={this.imgMouseEnter}
+              onMouseLeave={this.imgMouseLeave}
+              onClick={this.imgClick}
+            >
               <img src={meAbout} alt="About Image" />
             </div>
           </div>
@@ -62,6 +79,21 @@ class About extends React.Component {
       </section>
     );
   }
+
+  imgMouseEnter() {
+    this.setState({ imgActive: true });
+  }
+
+  imgMouseLeave() {
+    this.setState({ imgActive: false });
+  }
+
+  imgClick() {
+    let { imgActive } = this.state;
+    imgActive = !imgActive;
+    this.setState({ imgActive });
+  }
+
 
   handleClick(anchor) {
     window.location.href = anchor;
