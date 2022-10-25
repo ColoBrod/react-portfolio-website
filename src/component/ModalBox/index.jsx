@@ -2,12 +2,12 @@ import React from 'react';
 import Global from 'Global';
 
 // SwiperJS
-import { Pagination, Autoplay, Navigation } from 'swiper';
+import { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-// import 'swiper/css/autoplay';
+import 'swiper/css/autoplay';
 
 // Styles
 import './index.scss';
@@ -27,7 +27,7 @@ class ModalBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      display: "none",
+      visibility: "hidden",
       img: [],
       sliderOrientation: "",
       title: "",
@@ -49,7 +49,7 @@ class ModalBox extends React.Component {
     const { ln } = this.context;
 
     const { 
-      display, 
+      visibility, 
       img, 
       sliderOrientation = "", 
       title, 
@@ -63,12 +63,9 @@ class ModalBox extends React.Component {
     const pagination = { 
       clickable: true,
     };
-    const autoplay = { 
-      delay: 2, 
-      disableOnInteraction: false, 
-    };
+    const autoplay = { delay: 2500, disableOnInteraction: true }
     return(
-      <div className="modal-box" style={{ display }}>
+      <div className="modal-box" style={{ visibility }}>
         <div className="modal-box__inner">
           <div className="modal-box__header">
             <div className="modal-box__title">{ title }</div>
@@ -90,6 +87,7 @@ class ModalBox extends React.Component {
               pagination={{ ...pagination }}
               autoplay={{ ...autoplay }}
               onSwiper={(swiper) => this.swiper = swiper}
+              loop={true}
               // navigation={true}
             >
               {
@@ -152,17 +150,21 @@ class ModalBox extends React.Component {
   }
 
   show() {
+    // Устанавливаем первый слайд
+    this.swiper.activeIndex = 1;
     this.setState({
-      display: "block",
+      visibility: "visible",
     });
+    // Продолжаем автовоспроизведение слайдов
+    this.swiper.autoplay.run();
   }
 
   hide() {
     this.setState({
-      display: "none",
+      visibility: "hidden",
       img: [],
     });
-    this.swiper.activeIndex = 0;
+    
   }
 }
 

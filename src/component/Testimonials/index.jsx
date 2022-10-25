@@ -2,11 +2,12 @@ import React from 'react';
 import Global from 'Global';
 
 // SwiperJS
-import { Pagination } from 'swiper';
+import { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 
 import './index.css';
 import "/node_modules/flag-icons/css/flag-icons.min.css";
@@ -23,6 +24,7 @@ class Testimonials extends React.Component {
 
   render() {
     const pagination = { clickable: true }
+    const autoplay = { delay: 2500, disableOnInteraction: true }
     const { ln } = this.context;
     lc.setLanguage(ln);
     return (
@@ -35,11 +37,13 @@ class Testimonials extends React.Component {
             { lc.formatString(lc.description, <b>UpWork</b>) }
           </p>
           <Swiper 
-            modules={[Pagination]}
+            modules={[Pagination, Autoplay]}
             className="container__testimonials-swiper"
             spaceBetween={50}
             slidesPerView={1}
             pagination={{ ...pagination }}
+            autoplay={{ ...autoplay }}
+            loop={true}
           >
             {
               data.map((testimonial, index) => 
