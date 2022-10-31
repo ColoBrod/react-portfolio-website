@@ -50,10 +50,45 @@ class Testimonials extends React.Component {
                 this.renderItem(testimonial, index))
             }
           </Swiper>
+          <br />
+          <p className="container__testimonials-description">
+            Недавно я решил собирать отзывы о своей работе в открытом Telegram-чате:
+          </p>
+          <div className="tg-script-wrapper"></div>
         </div>
+
+        
 
       </section>
     );
+  }
+
+  componentDidMount() {
+    this.renderTgWidget();
+  }
+
+  renderTgWidget() {
+    const script = document.createElement("script");
+    script.src = "https://telegram.org/js/telegram-widget.js?21";
+    script.async = true;
+    script.setAttribute("data-telegram-post", "lazarev_testimonials/5");
+    script.setAttribute("data-width", "100%");
+    script.setAttribute("data-userpic", "true");
+    // script.setAttribute("data-color", "343638");
+    // script.setAttribute("data-dark", "1");
+    // script.setAttribute("data-dark-color", "FFFFFF");
+    const wrapper = document.querySelector(".tg-script-wrapper");
+    wrapper.appendChild(script);
+
+    // <script 
+    //   async 
+    //   src="https://telegram.org/js/telegram-widget.js?21" 
+    //   data-telegram-post="lazarev_testimonials/5" 
+    //   data-width="100%" 
+    //   data-userpic="true" 
+    //   data-color="343638" 
+    //   data-dark="1" 
+    //   data-dark-color="FFFFFF"></script>
   }
 
   renderItem(testimonial, index) {

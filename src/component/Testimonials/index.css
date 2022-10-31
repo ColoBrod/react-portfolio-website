@@ -138,6 +138,11 @@
   /* margin: 0.8rem auto 0; */
 }
 
+/* .tgme_widget_message_bubble {
+  border: 1px solid transparent !important;
+  background: black !important;
+} */
+
 @media screen and (max-width: 1280px) {
   .container__testimonials-description {
     width: 100%;
