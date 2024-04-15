@@ -56,8 +56,12 @@ import TopDonations from './content/top-donations';
 // TolbertMusic
 import TolbertMusic from './content/tolbertmusic';
 
+// Arcomage
+import Archmage from './content/archmage';
+
 const portfolio = [
   LanOptic,
+  Archmage,
   TolbertMusic,
   JoelStuurman,
   RealtySignPost,

@@ -151,7 +151,6 @@ class ModalBox extends React.Component {
 
   show() {
     // Устанавливаем первый слайд
-    this.swiper.activeIndex = 1;
     this.setState({
       visibility: "visible",
     });
